@@ -11,14 +11,17 @@ from urllib.request import urlopen
 from bs4 import BeautifulSoup
 import re
 
-# scrape website for URLs
-html = urlopen("http://www.azlyrics.com/c/coldplay.html") 
-bsObj = BeautifulSoup(html, "html.parser")
-for link in bsObj.findAll("a", 
-	href=re.compile("http://www\.azlyrics\.com/lyrics/coldplay/")): # specify type of links scraped
-	if 'href' in link.attrs: 
-		print(link.attrs['href'])
-		
+base_url = "http://www.azlyrics.com"
+# artist_url = "http://www.azlyrics.com/c/coldplay.html"
+
+def get_lyrics_links(artist_url):
+
+	html = urlopen(artist_url) 
+	soup = BeautifulSoup(html, "lxml")
+	location = soup.find(div, album)
+	lyrics_links = [a["href"] for div in location.findAll("div")]
+	return lyrics_links
+
 # # make list of URLs
 # url_list = []
 
