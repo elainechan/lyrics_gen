@@ -9,18 +9,16 @@ BeautifulSoup.find(tag, attributes, recursive, text, keywords)
 
 from urllib.request import urlopen 
 from bs4 import BeautifulSoup
-import re
-
-base_url = "http://www.azlyrics.com"
-# artist_url = "http://www.azlyrics.com/c/coldplay.html"
 
 def get_lyrics_links(artist_url):
 
 	html = urlopen(artist_url) 
-	soup = BeautifulSoup(html, "lxml")
-	location = soup.find(div, album)
-	lyrics_links = [a["href"] for div in location.findAll("div")]
-	return lyrics_links
+	soup = BeautifulSoup(html, "html.parser")
+	locations = soup.findAll(id="listAlbum")
+	return locations
+	print(len(locations))
+
+get_lyrics_links("http://www.azlyrics.com/c/coldplay.html")
 
 # # make list of URLs
 # url_list = []
