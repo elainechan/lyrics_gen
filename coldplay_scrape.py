@@ -1,5 +1,5 @@
 '''
-coldplay.py
+coldplay_scrape.py
 A Web scraper that collects a corpus of Coldplay lyrics.
 
 Functions used:
