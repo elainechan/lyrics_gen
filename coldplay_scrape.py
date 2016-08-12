@@ -13,13 +13,12 @@ import re
 
 # scrape website for URLs
 html = urlopen("http://www.azlyrics.com/c/coldplay.html") 
-bsObj = BeautifulSoup(html)
-for link in bsObj.findAll("a",
-	href=re.compile("^(/lyrics/coldplay/)((?!:).)*$")): # specify types of links scraped
+bsObj = BeautifulSoup(html, "html.parser")
+for link in bsObj.findAll("a", 
+	href=re.compile("http://www\.azlyrics\.com/lyrics/coldplay/")): # specify type of links scraped
 	if 'href' in link.attrs: 
 		print(link.attrs['href'])
-		url_list = list(link.attrs['href'])
-
+		
 # # make list of URLs
 # url_list = []
 
