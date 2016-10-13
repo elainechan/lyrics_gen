@@ -14,10 +14,9 @@ def get_lyrics_links(artist_url, local_filename):
 	local_filename, headers = urllib.request.urlretrieve('http://www.azlyrics.com/c/coldplay.html')
 	html = open(local_filename)
 	soup = BeautifulSoup(html, 'html.parser')
-	return soup.prettify()
 	print(soup.prettify())
 
-# get_lyrics_links('http://www.azlyrics.com/c/coldplay.html', 'url_resource.html')
+get_lyrics_links('http://www.azlyrics.com/c/coldplay.html', 'url_resource.html')
 
 # make list of URLs
 
